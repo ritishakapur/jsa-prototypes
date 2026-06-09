@@ -1432,9 +1432,9 @@
       <div class="control-group">
         <span class="control-label">Group by</span>
         <div class="seg-control" id="groupBy">
-          <button class="seg-btn active" data-val="category">Category</button>
+          <button class="seg-btn active" data-val="tier">Time horizon</button>
+          <button class="seg-btn" data-val="category">Category</button>
           <button class="seg-btn" data-val="stakeholder">Stakeholder</button>
-          <button class="seg-btn" data-val="tier">Time horizon</button>
           <button class="seg-btn" data-val="strategic">Demand · Execution · Supply</button>
         </div>
       </div>
@@ -1996,7 +1996,7 @@
 
     const SHORTLIST_KEY = 'jsa-shortlist';
     let shortlist = JSON.parse(localStorage.getItem(SHORTLIST_KEY) || '[]');
-    let state = { groupBy: 'category', sortBy: 'revenue', search: '' };
+    let state = { groupBy: 'tier', sortBy: 'revenue', search: '' };
 
     function sortIdeas(ideas, sortBy) {
       const arr = [...ideas];
