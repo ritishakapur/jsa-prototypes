@@ -170,6 +170,82 @@
       border-top: 1px solid rgba(255, 255, 255, 0.10);
     }
 
+    .mobile-menu-btn {
+      display: none;
+    }
+
+    .mobile-nav {
+      display: none;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+      padding: 6px 0 8px;
+      gap: 6px;
+      align-items: center;
+    }
+
+    .mobile-nav::-webkit-scrollbar {
+      display: none;
+    }
+
+    .mobile-nav.open {
+      display: flex;
+    }
+
+    .mobile-nav-btn {
+      flex-shrink: 0;
+      border: none;
+      background: rgba(0, 0, 0, 0.25);
+      color: rgba(255, 255, 255, 0.7);
+      padding: 8px 16px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 600;
+      cursor: pointer;
+      font-family: inherit;
+      transition: all 0.2s;
+      white-space: nowrap;
+    }
+
+    .mobile-nav-btn:hover {
+      background: rgba(0, 0, 0, 0.35);
+      color: white;
+    }
+
+    .mobile-nav-btn.active {
+      background: var(--s500);
+      color: var(--p800);
+      box-shadow: 0 2px 8px rgba(255, 182, 0, 0.3);
+    }
+
+    .mobile-nav-divider {
+      flex-shrink: 0;
+      width: 1px;
+      height: 20px;
+      background: rgba(255, 255, 255, 0.15);
+    }
+
+    .mobile-search {
+      flex-shrink: 0;
+      background: rgba(255, 255, 255, 0.10);
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      color: white;
+      padding: 8px 14px;
+      border-radius: 999px;
+      font-family: inherit;
+      font-size: 13px;
+      min-width: 130px;
+    }
+
+    .mobile-search::placeholder {
+      color: rgba(255, 255, 255, 0.5);
+    }
+
+    .mobile-search:focus {
+      outline: 2px solid var(--s500);
+      background: rgba(255, 255, 255, 0.15);
+    }
+
     .control-group {
       display: flex;
       align-items: center;
@@ -1384,13 +1460,53 @@
       }
     }
 
-    @media (max-width:640px) {
+    @media (max-width:1100px) {
+      .controls {
+        display: none;
+      }
+
+      .mobile-nav {
+        display: flex;
+      }
+
       .layout {
-        padding: 18px 16px;
+        grid-template-columns: 1fr;
+      }
+
+      .shortlist {
+        position: static;
+        max-height: none;
+        border-radius: 16px;
+        margin-top: 20px;
       }
 
       .header {
         padding: 12px 16px;
+      }
+
+      .header-top {
+        gap: 10px;
+      }
+
+      .brand-text h1 {
+        font-size: 14px;
+      }
+
+      .brand-text p {
+        font-size: 9px;
+      }
+
+      .stat-pill {
+        padding: 5px 10px;
+        font-size: 10px;
+      }
+
+      .stat-pill b {
+        font-size: 11px;
+      }
+
+      .layout {
+        padding: 18px 16px;
       }
 
       .parent-banner {
@@ -1406,6 +1522,27 @@
 
       .parent-banner-title {
         font-size: 21px;
+      }
+
+      .card-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .drawer {
+        width: 100vw;
+        max-width: 100vw;
+      }
+
+      .drawer-body {
+        padding: 20px;
+      }
+
+      .pilot-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .beforeafter {
+        grid-template-columns: 1fr;
       }
     }
   </style>
@@ -1447,6 +1584,20 @@
         </div>
       </div>
       <input type="search" class="search-input" id="search" placeholder="Search ideas...">
+    </div>
+
+    <!-- Mobile Horizontal Nav -->
+    <div class="mobile-nav" id="mobile-nav">
+      <span class="mobile-nav-section-label">Group</span>
+      <button class="mobile-nav-btn active" data-group="tier">🚀 Time horizon</button>
+      <button class="mobile-nav-btn" data-group="category">📂 Category</button>
+      <button class="mobile-nav-btn" data-group="stakeholder">👤 Stakeholder</button>
+      <button class="mobile-nav-btn" data-group="strategic">📊 Strategic</button>
+      <span class="mobile-nav-section-label">Sort</span>
+      <button class="mobile-nav-btn" data-sort="revenue">💰 Revenue</button>
+      <button class="mobile-nav-btn" data-sort="tier">📅 Timeline</button>
+      <button class="mobile-nav-btn" data-sort="halo">⭐ Halo</button>
+      <input type="search" class="mobile-search" id="mobile-search" placeholder="Search...">
     </div>
   </header>
 
@@ -2276,6 +2427,7 @@
         document.querySelectorAll('#groupBy .seg-btn').forEach(b => b.classList.remove('active'));
         e.target.classList.add('active');
         state.groupBy = e.target.dataset.val;
+        syncMobileNav();
         render();
       }
     });
@@ -2284,6 +2436,7 @@
         document.querySelectorAll('#sortBy .seg-btn').forEach(b => b.classList.remove('active'));
         e.target.classList.add('active');
         state.sortBy = e.target.dataset.val;
+        syncMobileNav();
         render();
       }
     });
@@ -2291,11 +2444,64 @@
       state.search = e.target.value;
       render();
     });
+
+    // Mobile nav event listeners
+    document.getElementById('mobile-nav').addEventListener('click', e => {
+      if (e.target.classList.contains('mobile-nav-btn')) {
+        const group = e.target.dataset.group;
+        const sort = e.target.dataset.sort;
+
+        if (group) {
+          document.querySelectorAll('.mobile-nav-btn[data-group]').forEach(b => b.classList.remove('active'));
+          e.target.classList.add('active');
+          state.groupBy = group;
+
+          // Sync desktop controls
+          document.querySelectorAll('#groupBy .seg-btn').forEach(b => {
+            b.classList.remove('active');
+            if (b.dataset.val === group) b.classList.add('active');
+          });
+        }
+
+        if (sort) {
+          document.querySelectorAll('.mobile-nav-btn[data-sort]').forEach(b => b.classList.remove('active'));
+          e.target.classList.add('active');
+          state.sortBy = sort;
+
+          // Sync desktop controls
+          document.querySelectorAll('#sortBy .seg-btn').forEach(b => {
+            b.classList.remove('active');
+            if (b.dataset.val === sort) b.classList.add('active');
+          });
+        }
+
+        render();
+      }
+    });
+
+    document.getElementById('mobile-search').addEventListener('input', e => {
+      state.search = e.target.value;
+      document.getElementById('search').value = e.target.value;
+      render();
+    });
+
+    function syncMobileNav() {
+      document.querySelectorAll('.mobile-nav-btn[data-group]').forEach(b => {
+        b.classList.remove('active');
+        if (b.dataset.group === state.groupBy) b.classList.add('active');
+      });
+      document.querySelectorAll('.mobile-nav-btn[data-sort]').forEach(b => {
+        b.classList.remove('active');
+        if (b.dataset.sort === state.sortBy) b.classList.add('active');
+      });
+    }
+
     document.addEventListener('keydown', e => { if (e.key === 'Escape') closeDrawer(); });
 
     document.getElementById('stat-total').textContent = IDEAS.length;
     render();
     renderShortlist();
+    syncMobileNav();
   </script>
 </body>
 
