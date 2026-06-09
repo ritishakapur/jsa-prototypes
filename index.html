@@ -1524,9 +1524,9 @@
 
     const TIER_ORDER = ['NOW', 'NEXT', 'FUTURE'];
     const TIER_META = {
-      NOW: { label: 'Now', icon: '🚀', desc: 'Cheap, fast, info-buying. Buys the load-bearing numbers, activation rate and tonnes per active fabricator. Greenlight first.', num: '01' },
-      NEXT: { label: 'Next', icon: '⏭️', desc: 'High-attribution payback. Cost savings and time savings the CFO can read off the ledger. Self-funding wave.', num: '02' },
-      FUTURE: { label: 'Future', icon: '🔮', desc: 'Big, de-risked moat and revenue plays. Once the funnel and credibility from Wave 1 and 2 have earned the right to deploy them.', num: '03' },
+      NOW: { label: 'Now', icon: '🚀' },
+      NEXT: { label: 'Next', icon: '⏭️' },
+      FUTURE: { label: 'Future', icon: '🔮' },
     };
     const STRATEGIC_ORDER = ['demand', 'execution', 'supply'];
     const STRATEGIC_META = {
@@ -1867,7 +1867,6 @@
         },
         notion: ''
       },
-      },
       {
         id: 'R2', title: 'Use-case encyclopedia', flagship: 'Consumer Trust & Content',
         tagline: 'A trusted public record of what stainless really costs, lasts, and proves. Not another ad campaign.',
@@ -1990,11 +1989,8 @@
         const meta = groupBy === 'tier' ? TIER_META[key] : STRATEGIC_META[key];
         return `
       <div class="parent-banner">
-        <div class="parent-banner-num">${meta.num}</div>
         <div class="parent-banner-text">
-          <div class="parent-banner-eyebrow">${groupBy === 'tier' ? 'Wave' : 'Strategic question'}</div>
           <div class="parent-banner-title">${meta.icon} ${meta.label}</div>
-          <div class="parent-banner-desc">${meta.desc}</div>
         </div>
         <div class="parent-banner-pills">
           <span class="pill-flat"><b>${count}</b> idea${count !== 1 ? 's' : ''}</span>
