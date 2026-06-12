@@ -1752,6 +1752,150 @@
       max-width: 480px;
     }
 
+    /* COLLAPSIBLE DETAIL SECTIONS */
+    .detail-section {
+      padding: 0;
+    }
+
+    .detail-section > summary {
+      padding: 22px;
+      cursor: pointer;
+      list-style: none;
+      position: relative;
+    }
+
+    .detail-section > summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .detail-section > summary::after {
+      content: '+';
+      position: absolute;
+      right: 22px;
+      top: 20px;
+      font-size: 20px;
+      font-weight: 800;
+      color: var(--s600);
+    }
+
+    .detail-section[open] > summary::after {
+      content: '\2212';
+    }
+
+    .detail-section > summary .section-title {
+      margin-bottom: 0;
+    }
+
+    .detail-section > .detail-content {
+      padding: 0 22px 22px;
+    }
+
+    /* REVENUE STACKED BAR */
+    .revenue-bar {
+      margin: 10px 0 18px;
+    }
+
+    .revenue-bar-track {
+      display: flex;
+      height: 14px;
+      border-radius: 7px;
+      overflow: hidden;
+      background: var(--bg-alt);
+    }
+
+    .revenue-bar-seg {
+      height: 100%;
+    }
+
+    .revenue-bar-legend {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px 16px;
+      margin-top: 10px;
+    }
+
+    .revenue-bar-legend-item {
+      font-size: 11px;
+      color: var(--ink-mid);
+      display: flex;
+      align-items: flex-start;
+      gap: 6px;
+      max-width: 100%;
+    }
+
+    .revenue-bar-legend-item .dot {
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      display: inline-block;
+      flex-shrink: 0;
+      margin-top: 3px;
+    }
+
+    /* MOTIVATION CARD ICON */
+    .group-card-icon {
+      font-size: 22px;
+      margin-bottom: 6px;
+      line-height: 1;
+    }
+
+    /* PHASE ROADMAP */
+    .phase-roadmap {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0;
+      margin: 6px 0 18px;
+      position: relative;
+    }
+
+    .phase-roadmap::before {
+      content: '';
+      position: absolute;
+      top: 14px;
+      left: 12.5%;
+      right: 12.5%;
+      height: 2px;
+      background: var(--border-strong);
+      z-index: 0;
+    }
+
+    .phase-roadmap-item {
+      text-align: center;
+      padding: 0 6px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .phase-roadmap-num {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: var(--g-navy-deep);
+      color: white;
+      font-weight: 800;
+      font-size: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 8px;
+    }
+
+    .phase-roadmap-weeks {
+      font-size: 9.5px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--s600);
+      font-weight: 800;
+      margin-bottom: 2px;
+    }
+
+    .phase-roadmap-label {
+      font-size: 11.5px;
+      color: var(--ink);
+      font-weight: 700;
+      line-height: 1.3;
+    }
+
     @media (max-width: 640px) {
       .glance-grid {
         grid-template-columns: 1fr;
@@ -1759,6 +1903,14 @@
 
       .dash-list {
         grid-template-columns: 1fr;
+      }
+
+      .phase-roadmap {
+        grid-template-columns: 1fr;
+      }
+
+      .phase-roadmap::before {
+        display: none;
       }
     }
 
@@ -2712,12 +2864,19 @@
     }
 
     function renderGroups(groups) {
-      return groups.map(g => `
+      return groups.map(g => {
+        let icon = '⭐';
+        if (/indirect|compound|\bstay/i.test(g.heading)) icon = '🔁';
+        else if (/direct money|\bmoney\b|income|\bpay\b|joins/i.test(g.heading)) icon = '💰';
+        else if (/social|legacy|contribut|\bgive\b/i.test(g.heading)) icon = '🤝';
+        return `
         <div class="group-card">
+          <div class="group-card-icon">${icon}</div>
           <div class="group-card-head">${g.heading}</div>
           ${g.intro ? `<p>${g.intro}</p>` : ''}
           <ul>${g.items.map(t => `<li>${t}</li>`).join('')}</ul>
-        </div>`).join('');
+        </div>`;
+      }).join('');
     }
 
     function renderSteps(steps) {
@@ -2734,6 +2893,21 @@
         <thead><tr>${headers.map(h => `<th>${h}</th>`).join('')}</tr></thead>
         <tbody>${rows.map((r, idx) => `<tr class="${idx === totalRowIndex ? 'total' : ''}">${r.map(c => `<td>${c}</td>`).join('')}</tr>`).join('')}</tbody>
       </table>`;
+    }
+
+    function renderRevenueBar(headers, rows, totalRowIndex) {
+      const valueIdx = headers.length - 1;
+      const colors = ['var(--p400)', 'var(--s500)', 'var(--a-green)', 'var(--a-orange)', 'var(--p200)', 'var(--a-rose)'];
+      const items = rows
+        .map((r, idx) => ({ label: r[0], val: r[valueIdx], idx }))
+        .filter(it => it.idx !== totalRowIndex && /^₹[\d,]+$/.test(it.val))
+        .map(it => ({ ...it, num: parseInt(it.val.replace(/[₹,]/g, ''), 10) }));
+      const total = items.reduce((s, it) => s + it.num, 0);
+      if (!total) return '';
+      return `<div class="revenue-bar">
+        <div class="revenue-bar-track">${items.map((it, i) => `<div class="revenue-bar-seg" style="width:${(it.num / total * 100).toFixed(1)}%; background:${colors[i % colors.length]}"></div>`).join('')}</div>
+        <div class="revenue-bar-legend">${items.map((it, i) => `<div class="revenue-bar-legend-item"><span class="dot" style="background:${colors[i % colors.length]}"></span>${it.label} (${it.val})</div>`).join('')}</div>
+      </div>`;
     }
 
     function renderGlance(cells) {
@@ -2755,24 +2929,40 @@
         case 'list': return renderList(sec.data);
         case 'groups': return renderGroups(sec.data);
         case 'steps': return (sec.intro ? `<p>${sec.intro}</p>` : '') + renderSteps(sec.data);
-        case 'table': return renderTable(sec.headers, sec.data, sec.totalRowIndex);
+        case 'table': {
+          const isRevenue = headers => headers && headers[0] === 'Revenue stream' && sec.totalRowIndex !== undefined;
+          return (isRevenue(sec.headers) ? renderRevenueBar(sec.headers, sec.data, sec.totalRowIndex) : '') + renderTable(sec.headers, sec.data, sec.totalRowIndex);
+        }
         case 'glance': return renderGlance(sec.data);
         case 'dashboard': return renderDashboard(sec.data);
         case 'hypo': return `<div class="hypo"><span>${sec.label || 'NOTE'}</span>${sec.text}</div>`;
         case 'kpi': return `<div class="kpi-strip"><b>${sec.label}</b> ${sec.text}</div>`;
         case 'feat': return `<div class="feat-grid">${sec.data.map(f => `<div class="feat-item">${f}</div>`).join('')}</div>`;
         case 'notion': return `<a class="notion-link" href="${sec.url}" target="_blank">Full proposition in Notion →</a>`;
-        case 'mixed': return sec.data.map(sub => `${sub.heading ? `<h4 style="font-size:11px; font-weight:800; color:var(--ink); text-transform:uppercase; letter-spacing:0.6px; margin:14px 0 8px;">${sub.heading}</h4>` : ''}${renderDetailBody(sub)}`).join('');
+        case 'mixed': {
+          const phaseRe = /^Phase\s*(\d+)\s*[—-]\s*(.+?)\s*\(weeks?\s*([\d\-]+)/i;
+          const phases = sec.data.map(sub => sub.heading && sub.heading.match(phaseRe)).filter(Boolean);
+          const roadmap = phases.length >= 2 ? `<div class="phase-roadmap">${phases.map(m => `
+            <div class="phase-roadmap-item">
+              <div class="phase-roadmap-num">${m[1]}</div>
+              <div class="phase-roadmap-weeks">Wk ${m[3]}</div>
+              <div class="phase-roadmap-label">${m[2]}</div>
+            </div>`).join('')}</div>` : '';
+          return roadmap + sec.data.map(sub => `${sub.heading ? `<h4 style="font-size:11px; font-weight:800; color:var(--ink); text-transform:uppercase; letter-spacing:0.6px; margin:14px 0 8px;">${sub.heading}</h4>` : ''}${renderDetailBody(sub)}`).join('');
+        }
         default: return '';
       }
     }
 
-    function renderDetailSection(sec) {
-      return `<div class="section">
-        ${sec.eyebrow ? `<div class="section-eyebrow">${sec.eyebrow}</div>` : ''}
-        ${sec.title ? `<div class="section-title">${sec.title}</div>` : ''}
-        ${renderDetailBody(sec)}
-      </div>`;
+    function renderDetailSection(sec, idx) {
+      if (sec.type === 'notion') {
+        return `<div class="section">${renderDetailBody(sec)}</div>`;
+      }
+      const header = `${sec.eyebrow ? `<div class="section-eyebrow">${sec.eyebrow}</div>` : ''}${sec.title ? `<div class="section-title">${sec.title}</div>` : ''}`;
+      return `<details class="section detail-section"${idx < 3 ? ' open' : ''}>
+        <summary>${header}</summary>
+        <div class="detail-content">${renderDetailBody(sec)}</div>
+      </details>`;
     }
 
     function openDrawer(id) {
