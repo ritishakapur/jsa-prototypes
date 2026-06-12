@@ -53,6 +53,8 @@
       --bg-alt: var(--n50);
       --border: var(--n200);
       --border-strong: var(--n300);
+      --font-head: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      --font-body: 'Open Sans', -apple-system, sans-serif;
     }
 
     * {
@@ -66,12 +68,33 @@
     }
 
     body {
-      font-family: 'Open Sans', -apple-system, sans-serif;
+      font-family: var(--font-body);
       background: var(--bg);
       color: var(--ink);
       line-height: 1.55;
       -webkit-font-smoothing: antialiased;
       font-size: 14px;
+    }
+
+    /* Titles / headings: Helvetica Neue Bold. Body stays Open Sans (inherited). */
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    .brand-text h1,
+    .group-title,
+    .parent-banner-title,
+    .parent-banner-num,
+    .card-title,
+    .card-price,
+    .section-title,
+    .problem-stat-num,
+    .drawer-head-text h2,
+    .shortlist-head h3 {
+      font-family: var(--font-head);
+      font-weight: 700;
     }
 
     /* HEADER */
@@ -1690,7 +1713,7 @@
       {
         id: 'R8', title: 'Urban Company for Fabricators', flagship: 'MSME / Contractor Platform',
         tagline: 'Routes hidden SS fabrication demand to vetted fabricators, and gives them a back-office to deliver.',
-        stakes: ['B'], cat: 'marketplace', side: 'demand', som: 2, tam: 90, tier: 'FUTURE', halo: 4,
+        stakes: ['B'], cat: 'marketplace', side: 'demand', som: 2, tam: 90, revenue: 'TBD', tier: 'FUTURE', halo: 4,
         analogue: 'Urban Company', logo: 'Urban Company.avif',
         bucket: '6.2 Marketplace',
         problem: {
@@ -1715,7 +1738,7 @@
       {
         id: 'R10', title: 'Y-Combinator for MSMEs / Fabricators', flagship: 'MSME / Contractor Platform',
         tagline: 'A 12-week accelerator plus embedded credit, so cashflow never forces a fabricator to downgrade the grade.',
-        stakes: ['B'], cat: 'capital', side: 'execution', som: 3, tam: 46, tier: 'NEXT', halo: 5,
+        stakes: ['B'], cat: 'capital', side: 'execution', som: 3, tam: 46, revenue: 'TBD', tier: 'NEXT', halo: 5,
         analogue: 'Y Combinator + Razorpay', logo: 'YCombinator.png',
         bucket: '5.1 Finance + 2.3 Entrepreneur',
         problem: {
@@ -1740,7 +1763,7 @@
       {
         id: 'R14', title: 'Stack Overflow for Fabricators', flagship: 'Fabricator Super-App',
         tagline: 'That 90-second window — between the missed call and the wrong decision — is what we are designing for.',
-        stakes: ['A'], cat: 'school', side: 'supply', som: 5.4, tam: 25, tier: 'NOW', halo: 4,
+        stakes: ['A'], cat: 'school', side: 'supply', som: 5.4, tam: 25, revenue: '₹2.7L', tier: 'NOW', halo: 4,
         analogue: 'WhatsApp + Stack Overflow', logo: 'Stack Overflow.png',
         bucket: '2.1 Knowledge at point of work', keystone: true,
 
@@ -1796,7 +1819,7 @@
       {
         id: 'R15', title: 'Coursera × Duolingo for SS', flagship: 'Student Academy',
         tagline: 'A licence ladder plus an adaptive AI tutor and a browser plant simulator. From zero to QA-grade fabricator.',
-        stakes: ['E', 'A'], cat: 'school', side: 'supply', som: 5.4, tam: 25, tier: 'NOW', halo: 3,
+        stakes: ['E', 'A'], cat: 'school', side: 'supply', som: 5.4, tam: 25, revenue: '₹2.1L', tier: 'NOW', halo: 3,
         analogue: 'Coursera + Duolingo', logo: 'Duolingo.png',
         bucket: '2.1 Training',
         problem: {
@@ -1821,7 +1844,7 @@
       {
         id: 'R16', title: 'Masterclass × Guru-Shishya for Masters', flagship: 'Master-Trainer Platform',
         tagline: 'Capture retiring masters\' craft and turn them into a federation of certified trainers.',
-        stakes: ['F'], cat: 'school', side: 'supply', som: 1, tam: 5, tier: 'NOW', halo: 3,
+        stakes: ['F'], cat: 'school', side: 'supply', som: 1, tam: 5, revenue: '₹1.7L', tier: 'NOW', halo: 3,
         analogue: 'Masterclass', logo: 'Masterclass.jpg',
         bucket: 'Faculty / 3.3',
         problem: {
@@ -1846,7 +1869,7 @@
       {
         id: 'R17', title: 'AI Ghost-Writer for Masters', flagship: 'Master-Trainer Platform',
         tagline: 'AI behind the master, not in front of the student. Great fabricators teach without becoming content producers.',
-        stakes: ['F'], cat: 'school', side: 'supply', som: 0.3, tam: 2, tier: 'NEXT', halo: 2,
+        stakes: ['F'], cat: 'school', side: 'supply', som: 0.3, tam: 2, revenue: 'TBD', tier: 'NEXT', halo: 2,
         analogue: 'AI ghost-writer', logo: 'AI Ghostwriter.png',
         bucket: 'Faculty / 3.3', isFeature: true,
         problem: {
@@ -1871,7 +1894,7 @@
       {
         id: 'R11', title: 'Pre-weld ritual videos', flagship: 'Fabricator Super-App',
         tagline: 'A 10-second pass/fail anyone can run, so "right the first time" becomes the default.',
-        stakes: ['A'], cat: 'school', side: 'execution', som: 0.5, tam: 3, tier: 'NOW', halo: 4,
+        stakes: ['A'], cat: 'school', side: 'execution', som: 0.5, tam: 3, revenue: '₹1.7L', tier: 'NOW', halo: 4,
         analogue: 'The Amul lactometer model', logo: 'Pre Weld Ritual.png',
         bucket: '2.2 / Process', isFeature: true,
         problem: {
@@ -1896,7 +1919,7 @@
       {
         id: 'R18', title: 'LinkedIn for Fabricators', flagship: 'Fabricator Super-App',
         tagline: 'A portable work-wallet that turns every correct job into a verifiable badge. Unlocks bigger jobs and cheaper credit.',
-        stakes: ['A'], cat: 'reputation', side: 'execution', som: 0.9, tam: 3.1, tier: 'NEXT', halo: 3,
+        stakes: ['A'], cat: 'reputation', side: 'execution', som: 0.9, tam: 3.1, revenue: 'TBD', tier: 'NEXT', halo: 3,
         analogue: 'LinkedIn (CRED-style)', logo: 'Linkedin.jpeg',
         bucket: '2.3 Placement + 3.4 Trust',
         problem: {
@@ -1921,7 +1944,7 @@
       {
         id: 'R19', title: 'CFA Charter for Fabricators', flagship: 'Fabricator Super-App',
         tagline: 'A gold-standard fabricator charter worth more than its exam fee. The CFA of welding.',
-        stakes: ['A'], cat: 'reputation', side: 'supply', som: 2, tam: 9.3, tier: 'NEXT', halo: 4,
+        stakes: ['A'], cat: 'reputation', side: 'supply', som: 2, tam: 9.3, revenue: 'TBD', tier: 'NEXT', halo: 4,
         analogue: 'CFA Institute', logo: 'CFA Certificate.jpeg',
         bucket: '2.2 Certification',
         problem: {
@@ -1946,7 +1969,7 @@
       {
         id: 'R4', title: 'Copilot × Grammarly for Specs', flagship: 'Buyer & Spec-writer Suite',
         tagline: 'The correct SS spec writes itself into every drawing and tender, by default.',
-        stakes: ['C'], cat: 'advisory', side: 'demand', som: 1.6, tam: 6, tier: 'FUTURE', halo: 5,
+        stakes: ['C'], cat: 'advisory', side: 'demand', som: 1.6, tam: 6, revenue: 'TBD', tier: 'FUTURE', halo: 5,
         analogue: 'Grammarly + Copilot', logo: 'Copilot.png',
         bucket: '3.1 Advisory · M1',
         problem: {
@@ -1971,7 +1994,7 @@
       {
         id: 'R5', title: 'Zestimate for Lifecycle Cost', flagship: 'Buyer & Spec-writer Suite',
         tagline: 'Shows the true 30-year cost, so SS wins on the number that actually matters.',
-        stakes: ['C'], cat: 'advisory', side: 'demand', som: 0.5, tam: 3, tier: 'FUTURE', halo: 4,
+        stakes: ['C'], cat: 'advisory', side: 'demand', som: 0.5, tam: 3, revenue: 'TBD', tier: 'FUTURE', halo: 4,
         analogue: 'Zillow Zestimate', logo: 'Zestimate.png',
         bucket: '3.1 Advisory · M1', isFeature: true,
         problem: {
@@ -1996,7 +2019,7 @@
       {
         id: 'R13', title: 'GitHub × Stack Overflow for Stainless', flagship: 'Knowledge Commons',
         tagline: 'An open, versioned commons of SS designs and details. Students and fabricators contribute and reuse.',
-        stakes: ['E', 'A', 'S'], cat: 'knowledge', side: 'supply', som: 0.2, tam: 3, tier: 'NEXT', halo: 3,
+        stakes: ['E', 'A', 'S'], cat: 'knowledge', side: 'supply', som: 0.2, tam: 3, revenue: 'TBD', tier: 'NEXT', halo: 3,
         analogue: 'GitHub + Stack Overflow', logo: 'Stack Overflow.png',
         bucket: '3.1 Knowledge Infra',
         problem: {
@@ -2021,7 +2044,7 @@
       {
         id: 'R2', title: 'Use-case encyclopedia', flagship: 'Consumer Trust & Content',
         tagline: 'A trusted public record of what stainless really costs, lasts, and proves. Not another ad campaign.',
-        stakes: ['D'], cat: 'knowledge', side: 'demand', som: 0.3, tam: 2, tier: 'NEXT', halo: 3,
+        stakes: ['D'], cat: 'knowledge', side: 'demand', som: 0.3, tam: 2, revenue: 'TBD', tier: 'NEXT', halo: 3,
         analogue: 'Wikipedia + MythBusters', logo: 'Use Case Encyclopedia.png',
         bucket: '1.1 Awareness · D1', isFeature: true,
         problem: {
@@ -2071,7 +2094,7 @@
       {
         id: 'R9', title: 'IKEA for SS', flagship: 'Consumer Trust & Content',
         tagline: 'JSL sells the finished, warranted SS product, not just the metal.',
-        stakes: ['D'], cat: 'consumer', side: 'demand', som: 1, tam: 8, tier: 'FUTURE', halo: 5,
+        stakes: ['D'], cat: 'consumer', side: 'demand', som: 1, tam: 8, revenue: 'TBD', tier: 'FUTURE', halo: 5,
         analogue: 'IKEA', logo: 'Ikea.avif',
         bucket: '1.3 Finished goods',
         problem: {
@@ -2196,7 +2219,8 @@
           idea.moat ? '<div class="card-corner-tag">🛡 Moat</div>' :
             idea.isFeature ? '<div class="card-corner-tag feature">Feature</div>' : '';
       const priceLabel = idea.unsized ? '<span style="color:var(--s400); font-size:11px; font-weight:600;">Not yet sized</span>' :
-        `<span class="card-price">₹${idea.tam} cr</span>`;
+        idea.revenue === 'TBD' ? '<span class="card-price" style="color:var(--s400);">Revenue: TBD</span>' :
+          `<span class="card-price">${idea.revenue}</span>`;
       // Main image = product logo. Small avatar = stakeholder photo (who it's for).
       const productLogoEl = idea.logo
         ? `<img class="product-logo" src="${LOGO_BASE}${encodeURIComponent(idea.logo)}" alt="${idea.analogue || idea.title}" onerror="this.parentElement.innerHTML = '<div class=\\'card-image-fallback\\'>${(idea.analogue || idea.title)[0]}</div>'">`
