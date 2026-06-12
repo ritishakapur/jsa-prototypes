@@ -1442,6 +1442,326 @@
       font-weight: 700;
     }
 
+    /* PROBLEM-FRAMING TABLE (detail view) */
+    .problem-row {
+      display: grid;
+      grid-template-columns: 28px 1fr;
+      gap: 12px;
+      padding: 14px;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      background: var(--bg-alt);
+      margin-bottom: 10px;
+    }
+
+    .problem-row:last-child {
+      margin-bottom: 0;
+    }
+
+    .problem-row-num {
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      background: var(--g-gold-signature);
+      color: var(--p800);
+      font-weight: 800;
+      font-size: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .problem-row-cell {
+      margin-bottom: 8px;
+    }
+
+    .problem-row-cell:last-child {
+      margin-bottom: 0;
+    }
+
+    .problem-row-cell label {
+      display: block;
+      font-size: 9px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      font-weight: 800;
+      color: var(--ink-soft);
+      margin-bottom: 2px;
+    }
+
+    .problem-row-cell p {
+      font-size: 12.5px;
+      color: var(--ink-mid);
+      line-height: 1.55;
+      margin: 0;
+    }
+
+    .problem-row-cell.quote p {
+      color: var(--ink);
+      font-weight: 600;
+      font-style: italic;
+    }
+
+    .problem-row-cell.opp p {
+      color: var(--p500);
+    }
+
+    /* STEP FLOW (diagram for step-by-step processes) */
+    .step-flow {
+      position: relative;
+      padding-left: 38px;
+      margin-top: 14px;
+    }
+
+    .step-flow::before {
+      content: '';
+      position: absolute;
+      left: 14px;
+      top: 8px;
+      bottom: 8px;
+      width: 2px;
+      background: var(--border-strong);
+    }
+
+    .step-item {
+      position: relative;
+      margin-bottom: 18px;
+    }
+
+    .step-item:last-child {
+      margin-bottom: 0;
+    }
+
+    .step-num {
+      position: absolute;
+      left: -38px;
+      top: 0;
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: var(--g-gold-signature);
+      color: var(--p800);
+      font-weight: 800;
+      font-size: 12.5px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 1;
+    }
+
+    .step-title {
+      font-weight: 700;
+      font-size: 13px;
+      color: var(--ink);
+      margin-bottom: 4px;
+    }
+
+    .step-body {
+      font-size: 12.5px;
+      color: var(--ink-mid);
+      line-height: 1.6;
+    }
+
+    /* GENERIC TABLES (detail view) */
+    .data-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 8px;
+      font-size: 12px;
+    }
+
+    .data-table th {
+      text-align: left;
+      font-size: 9.5px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--ink-soft);
+      font-weight: 800;
+      padding: 8px 10px;
+      border-bottom: 2px solid var(--border-strong);
+    }
+
+    .data-table td {
+      padding: 10px;
+      border-bottom: 1px solid var(--border);
+      color: var(--ink-mid);
+      line-height: 1.5;
+      vertical-align: top;
+    }
+
+    .data-table tr:last-child td {
+      border-bottom: none;
+    }
+
+    .data-table tr.total td {
+      font-weight: 800;
+      color: var(--ink);
+      background: var(--s100);
+    }
+
+    /* GROUP CARDS (who-shows-up motivations etc.) */
+    .group-card {
+      background: var(--bg-alt);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 14px 16px;
+      margin-bottom: 10px;
+    }
+
+    .group-card:last-child {
+      margin-bottom: 0;
+    }
+
+    .group-card-head {
+      font-size: 11px;
+      font-weight: 800;
+      color: var(--p500);
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      margin-bottom: 8px;
+    }
+
+    .group-card p {
+      font-size: 12.5px;
+    }
+
+    .group-card ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .group-card li {
+      padding-left: 16px;
+      position: relative;
+      font-size: 12.5px;
+      color: var(--ink-mid);
+      margin-bottom: 7px;
+      line-height: 1.55;
+    }
+
+    .group-card li:last-child {
+      margin-bottom: 0;
+    }
+
+    .group-card li::before {
+      content: "";
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--s500);
+      position: absolute;
+      left: 0;
+      top: 7px;
+    }
+
+    /* GLANCE PILLS */
+    .glance-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+      margin-top: 12px;
+    }
+
+    .glance-cell {
+      background: var(--bg-alt);
+      padding: 12px;
+      border-radius: 10px;
+      border: 1px solid var(--border);
+    }
+
+    .glance-cell-label {
+      font-size: 9px;
+      text-transform: uppercase;
+      color: var(--ink-soft);
+      font-weight: 800;
+      letter-spacing: 0.8px;
+    }
+
+    .glance-cell-val {
+      font-size: 12.5px;
+      color: var(--ink);
+      margin-top: 4px;
+      font-weight: 700;
+      line-height: 1.5;
+    }
+
+    .glance-cell.kill {
+      background: #FEF2F2;
+      border-color: #FCA5A5;
+      grid-column: 1 / -1;
+    }
+
+    .glance-cell.kill .glance-cell-label {
+      color: #B91C1C;
+    }
+
+    .glance-cell.kill .glance-cell-val {
+      color: #991B1B;
+      font-weight: 600;
+      font-size: 11.5px;
+    }
+
+    /* DASHBOARD LIST */
+    .dash-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 8px;
+      margin-top: 10px;
+    }
+
+    .dash-item {
+      background: var(--g-navy-deep);
+      color: white;
+      border-radius: 8px;
+      padding: 10px 12px;
+      font-size: 12px;
+      line-height: 1.5;
+    }
+
+    /* REVENUE BADGE (detail view header) */
+    .revenue-badge {
+      position: relative;
+      z-index: 1;
+      background: var(--g-gold-signature);
+      color: var(--p800);
+      font-weight: 800;
+      font-size: 13px;
+      padding: 8px 14px;
+      border-radius: 10px;
+      white-space: nowrap;
+      text-align: center;
+      flex-shrink: 0;
+    }
+
+    .revenue-badge small {
+      display: block;
+      font-size: 8.5px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      opacity: 0.7;
+      margin-top: 2px;
+    }
+
+    .drawer-head-text .tagline {
+      font-size: 12px;
+      opacity: 0.85;
+      margin-top: 8px;
+      line-height: 1.5;
+      max-width: 480px;
+    }
+
+    @media (max-width: 640px) {
+      .glance-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .dash-list {
+        grid-template-columns: 1fr;
+      }
+    }
+
     .empty-state {
       text-align: center;
       padding: 80px 20px;
@@ -1657,7 +1977,11 @@
   <div class="drawer-backdrop" id="drawer-backdrop" onclick="closeDrawer()"></div>
   <aside class="drawer" id="drawer" role="dialog" aria-modal="true"></aside>
 
+  <script src="idea-detail-data.js"></script>
   <script>
+    const IDEA_DETAILS = {};
+    (window.__IDEAS__ || []).forEach(d => IDEA_DETAILS[d.id] = d);
+
     const PHOTO_BASE = './Images/';
     const LOGO_BASE = './Images/Logos/';
     const STAKE_IMAGES = {
@@ -2367,11 +2691,119 @@
       renderShortlist();
     }
 
+    function renderProblemTable(rows) {
+      return `<div>${rows.map((r, idx) => `
+        <div class="problem-row">
+          <div class="problem-row-num">${idx + 1}</div>
+          <div>
+            <div class="problem-row-cell quote"><label>The fabricator's / learner's problem</label><p>${r.quote}</p></div>
+            <div class="problem-row-cell"><label>JSA / JSL's problem</label><p>${r.jsa}</p></div>
+            <div class="problem-row-cell opp"><label>Opportunity to explore</label><p>${r.opp}</p></div>
+          </div>
+        </div>`).join('')}</div>`;
+    }
+
+    function renderParagraphs(items) {
+      return items.map(t => `<p>${t}</p>`).join('');
+    }
+
+    function renderList(items) {
+      return `<ul style="list-style:none; padding:0; margin-top:8px;">${items.map(t => `<li style="padding-left:16px; position:relative; font-size:12.5px; color:var(--ink-mid); margin-bottom:7px; line-height:1.55;"><span style="content:''; width:6px; height:6px; border-radius:50%; background:var(--s500); position:absolute; left:0; top:7px; display:block;"></span>${t}</li>`).join('')}</ul>`;
+    }
+
+    function renderGroups(groups) {
+      return groups.map(g => `
+        <div class="group-card">
+          <div class="group-card-head">${g.heading}</div>
+          ${g.intro ? `<p>${g.intro}</p>` : ''}
+          <ul>${g.items.map(t => `<li>${t}</li>`).join('')}</ul>
+        </div>`).join('');
+    }
+
+    function renderSteps(steps) {
+      return `<div class="step-flow">${steps.map((s, idx) => `
+        <div class="step-item">
+          <div class="step-num">${idx + 1}</div>
+          ${s.title ? `<div class="step-title">${s.title}</div>` : ''}
+          <div class="step-body">${s.body}</div>
+        </div>`).join('')}</div>`;
+    }
+
+    function renderTable(headers, rows, totalRowIndex) {
+      return `<table class="data-table">
+        <thead><tr>${headers.map(h => `<th>${h}</th>`).join('')}</tr></thead>
+        <tbody>${rows.map((r, idx) => `<tr class="${idx === totalRowIndex ? 'total' : ''}">${r.map(c => `<td>${c}</td>`).join('')}</tr>`).join('')}</tbody>
+      </table>`;
+    }
+
+    function renderGlance(cells) {
+      return `<div class="glance-grid">${cells.map(c => `
+        <div class="glance-cell ${c.kill ? 'kill' : ''}">
+          <div class="glance-cell-label">${c.label}</div>
+          <div class="glance-cell-val">${c.val}</div>
+        </div>`).join('')}</div>`;
+    }
+
+    function renderDashboard(items) {
+      return `<div class="dash-list">${items.map(t => `<div class="dash-item">${t}</div>`).join('')}</div>`;
+    }
+
+    function renderDetailBody(sec) {
+      switch (sec.type) {
+        case 'problemTable': return renderProblemTable(sec.data);
+        case 'paragraphs': return renderParagraphs(sec.data);
+        case 'list': return renderList(sec.data);
+        case 'groups': return renderGroups(sec.data);
+        case 'steps': return (sec.intro ? `<p>${sec.intro}</p>` : '') + renderSteps(sec.data);
+        case 'table': return renderTable(sec.headers, sec.data, sec.totalRowIndex);
+        case 'glance': return renderGlance(sec.data);
+        case 'dashboard': return renderDashboard(sec.data);
+        case 'hypo': return `<div class="hypo"><span>${sec.label || 'NOTE'}</span>${sec.text}</div>`;
+        case 'kpi': return `<div class="kpi-strip"><b>${sec.label}</b> ${sec.text}</div>`;
+        case 'feat': return `<div class="feat-grid">${sec.data.map(f => `<div class="feat-item">${f}</div>`).join('')}</div>`;
+        case 'notion': return `<a class="notion-link" href="${sec.url}" target="_blank">Full proposition in Notion →</a>`;
+        case 'mixed': return sec.data.map(sub => `${sub.heading ? `<h4 style="font-size:11px; font-weight:800; color:var(--ink); text-transform:uppercase; letter-spacing:0.6px; margin:14px 0 8px;">${sub.heading}</h4>` : ''}${renderDetailBody(sub)}`).join('');
+        default: return '';
+      }
+    }
+
+    function renderDetailSection(sec) {
+      return `<div class="section">
+        ${sec.eyebrow ? `<div class="section-eyebrow">${sec.eyebrow}</div>` : ''}
+        ${sec.title ? `<div class="section-title">${sec.title}</div>` : ''}
+        ${renderDetailBody(sec)}
+      </div>`;
+    }
+
     function openDrawer(id) {
       const i = IDEAS.find(x => x.id === id);
       if (!i) return;
-      const logoSrc = i.logo ? LOGO_BASE + encodeURIComponent(i.logo) : '';
+      const detail = IDEA_DETAILS[id];
       const drawer = document.getElementById('drawer');
+      if (detail) {
+        const logoSrc = detail.logo ? LOGO_BASE + encodeURIComponent(detail.logo) : '';
+        drawer.innerHTML = `
+    <div class="drawer-head">
+      <div class="drawer-head-img">${detail.logo ? `<img src="${logoSrc}" alt="">` : `<div style="display:flex; align-items:center; justify-content:center; width:100%; height:100%; background:var(--g-gold-signature); color:var(--p800); font-weight:800; font-size:24px;">${(detail.analogue || '?')[0]}</div>`}</div>
+      <div class="drawer-head-text">
+        <div class="eyebrow">${detail.eyebrow}</div>
+        <h2>${detail.title}</h2>
+        ${detail.analogue ? `<div class="analogue-line">Like ${detail.analogue}</div>` : ''}
+        ${detail.tagline ? `<p class="tagline">${detail.tagline}</p>` : ''}
+      </div>
+      ${detail.revenue ? `<div class="revenue-badge">${detail.revenue}<small>6-mo pilot revenue</small></div>` : ''}
+      <button class="drawer-close" onclick="closeDrawer()" aria-label="Close">×</button>
+    </div>
+    <div class="drawer-body">
+      ${detail.sections.map(renderDetailSection).join('')}
+    </div>
+  `;
+        drawer.classList.add('open');
+        document.getElementById('drawer-backdrop').classList.add('open');
+        document.body.style.overflow = 'hidden';
+        return;
+      }
+      const logoSrc = i.logo ? LOGO_BASE + encodeURIComponent(i.logo) : '';
       drawer.innerHTML = `
     <div class="drawer-head">
       <div class="drawer-head-img">${i.logo ? `<img src="${logoSrc}" alt="">` : `<div style="display:flex; align-items:center; justify-content:center; width:100%; height:100%; background:var(--g-gold-signature); color:var(--p800); font-weight:800; font-size:24px;">${(i.analogue || '?')[0]}</div>`}</div>
