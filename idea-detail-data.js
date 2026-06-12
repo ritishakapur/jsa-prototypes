@@ -1,7 +1,7 @@
-// Data source for top4-ideas.html — full Notion content for the 4 "Now" tier ideas
+// Data source for top4-ideas.html - full Notion content for the 4 "Now" tier ideas
 window.__IDEAS__ = [
   // ============================================================
-  // IDEA 1 — Stack Overflow for Fabricators (R14)
+  // IDEA 1 - Stack Overflow for Fabricators (R14)
   // ============================================================
   {
     id: 'R14',
@@ -177,7 +177,7 @@ window.__IDEAS__ = [
             ]
           },
           {
-            heading: 'Phase 0 — Ground research (weeks 1-4)',
+            heading: 'Phase 0 - Ground research (weeks 1-4)',
             type: 'table',
             headers: ['#', 'Question answered', 'Method', 'Output'],
             data: [
@@ -189,7 +189,7 @@ window.__IDEAS__ = [
             ]
           },
           {
-            heading: 'Phase 1 — Build & seed (weeks 5-8)',
+            heading: 'Phase 1 - Build & seed (weeks 5-8)',
             type: 'list',
             data: [
               `Build MVP: voice in/out, top-20 questions answered in Hindi/Haryanvi first`,
@@ -200,7 +200,7 @@ window.__IDEAS__ = [
             ]
           },
           {
-            heading: 'Phase 2 — Live pilot, Wave 1 (weeks 9-16)',
+            heading: 'Phase 2 - Live pilot, Wave 1 (weeks 9-16)',
             type: 'table',
             headers: ['Assumption', 'Operationalized test', 'Metric & bar'],
             data: [
@@ -214,7 +214,7 @@ window.__IDEAS__ = [
             ]
           },
           {
-            heading: 'Phase 3 — Scale test, Wave 2 + revenue (weeks 17-24)',
+            heading: 'Phase 3 - Scale test, Wave 2 + revenue (weeks 17-24)',
             type: 'list',
             data: [
               `Wave 2: invite up to 500 from the 80K DB (Hisar region) via WhatsApp, digital-only onboarding. Compare activation vs. Wave 1's in-person rate: this answers "can this scale without feet on the street?"`,
@@ -245,7 +245,7 @@ window.__IDEAS__ = [
   },
 
   // ============================================================
-  // IDEA 2 — Coursera × Duolingo for SS (R15)
+  // IDEA 2 - Coursera × Duolingo for SS (R15)
   // ============================================================
   {
     id: 'R15',
@@ -453,7 +453,7 @@ window.__IDEAS__ = [
             ]
           },
           {
-            heading: 'Phase 0 — Ground research (weeks 1-4, pre-build)',
+            heading: 'Phase 0 - Ground research (weeks 1-4, pre-build)',
             type: 'table',
             headers: ['#', 'Question answered', 'Method', 'Output'],
             data: [
@@ -471,7 +471,7 @@ window.__IDEAS__ = [
             ]
           },
           {
-            heading: 'Phase 1 — Build and seed (weeks 5-8)',
+            heading: 'Phase 1 - Build and seed (weeks 5-8)',
             type: 'list',
             data: [
               `Build MVP: career map, placement test, two branches in Hindi/Haryanvi, evidence submission, peer review flow`,
@@ -487,7 +487,7 @@ window.__IDEAS__ = [
             ]
           },
           {
-            heading: 'Phase 2 — Live pilot, Wave 1 (weeks 9-16)',
+            heading: 'Phase 2 - Live pilot, Wave 1 (weeks 9-16)',
             type: 'paragraphs',
             data: [
               `Wave 1 goes live: 75 fabricators plus the polytechnic cohort. The assumptions table below is what this phase exists to test.`,
@@ -495,7 +495,7 @@ window.__IDEAS__ = [
             ]
           },
           {
-            heading: 'Phase 3 — Scale and revenue (weeks 17-24)',
+            heading: 'Phase 3 - Scale and revenue (weeks 17-24)',
             type: 'list',
             data: [
               `Wave 2: 500 invited digitally from the 80K DB, Hisar region. Activation versus Wave 1's in-person rate answers "can this scale without feet on the street?"`,
@@ -546,7 +546,7 @@ window.__IDEAS__ = [
   },
 
   // ============================================================
-  // IDEA 3 — Masterclass × Guru-Shishya for Masters (R16)
+  // IDEA 3 - Masterclass × Guru-Shishya for Masters (R16)
   // ============================================================
   {
     id: 'R16',
@@ -609,7 +609,7 @@ window.__IDEAS__ = [
         intro: `Status gets masters in the door. Money keeps them teaching. Learners just want to become them.`,
         data: [
           {
-            heading: `The master's ladder: why masters join (status, with money attached — their objections are the whole problem table, so we answer them first)`,
+            heading: `The master's ladder: why masters join (status, with money attached - their objections are the whole problem table, so we answer them first)`,
             items: [
               `It starts as a paid position, not a favor. A teaching fellowship with a stipend. Small, but it's the first time anyone has paid them to teach`,
               `We build them a stage. The masterclass, the profile, the client history, all public. Most of these experts spent forty years being respected inside one plant. This makes that respect visible outside it`
@@ -757,7 +757,7 @@ window.__IDEAS__ = [
             ]
           },
           {
-            heading: 'Phase 0 — Ground research (weeks 1-4)',
+            heading: 'Phase 0 - Ground research (weeks 1-4)',
             type: 'table',
             headers: ['#', 'Question answered', 'Method', 'Output and bar'],
             data: [
@@ -770,7 +770,7 @@ window.__IDEAS__ = [
             ]
           },
           {
-            heading: 'Phase 1 — Record and seed (weeks 5-12)',
+            heading: 'Phase 1 - Record and seed (weeks 5-12)',
             type: 'list',
             data: [
               `Record 2 masterclasses end to end, with the other 3 in progress`,
@@ -781,7 +781,7 @@ window.__IDEAS__ = [
             ]
           },
           {
-            heading: 'Phase 2 — Teach, certify, collect (weeks 13-24)',
+            heading: 'Phase 2 - Teach, certify, collect (weeks 13-24)',
             type: 'table',
             headers: ['Theme', 'Assumption', 'Test and bar'],
             data: [
@@ -823,7 +823,7 @@ window.__IDEAS__ = [
   },
 
   // ============================================================
-  // IDEA 4 — Quality assurance ritual building (R11 / Pre-weld ritual videos)
+  // IDEA 4 - Quality assurance ritual building (R11 / Pre-weld ritual videos)
   // ============================================================
   {
     id: 'R11',
@@ -1008,7 +1008,7 @@ window.__IDEAS__ = [
             ]
           },
           {
-            heading: 'Month 1 — find the buyer, count the baseline',
+            heading: 'Month 1 - find the buyer, count the baseline',
             type: 'list',
             data: [
               `Pitch 3 to 5 BD-introduced clients. The no-punishment clause is the filter: a client who won't sign it isn't a pilot site. Bar: 1 signature from 5 meetings`,
@@ -1023,7 +1023,7 @@ window.__IDEAS__ = [
             ]
           },
           {
-            heading: 'Months 2-3 — thin prototype, then the real product',
+            heading: 'Months 2-3 - thin prototype, then the real product',
             type: 'paragraphs',
             data: [
               `One line runs the ritual through a lightweight prototype (target: inside Saathi; platform call settled here). Week-8 checkpoint at the end of month 3.`,
@@ -1031,7 +1031,7 @@ window.__IDEAS__ = [
             ]
           },
           {
-            heading: 'Months 4-6 — scale it, charge for it',
+            heading: 'Months 4-6 - scale it, charge for it',
             type: 'paragraphs',
             data: [
               `Line 2 joins, site 2 onboards in month 5, and the money mechanics go live: Basic invoice in month 4, Advanced if the site's customer demands documentation, one workshop sold off the aggregate, site 2 quoted per line. The bar stays renewal, not the first cheque.`

@@ -2323,7 +2323,7 @@
       },
       {
         id: 'R14', title: 'Stack Overflow for Fabricators', flagship: 'Fabricator Super-App',
-        tagline: 'That 90-second window — between the missed call and the wrong decision — is what we are designing for.',
+        tagline: 'That 90-second window - between the missed call and the wrong decision - is what we are designing for.',
         stakes: ['A'], cat: 'school', side: 'supply', som: 5.4, tam: 25, revenue: '₹2.7L', tier: 'NOW', halo: 4,
         analogue: 'WhatsApp + Stack Overflow', logo: 'Stack Overflow.png',
         bucket: '2.1 Knowledge at point of work', keystone: true,
@@ -2336,34 +2336,34 @@
         problem: {
           num: '80,000',
           label: 'JSA-trained fabricators. Zero on-site answers at the moment of decision.',
-          // THE GAP — the human scene that opens the conversation
-          anecdote: 'A fabricator JSA trained 8 months ago is on a coastal job site. Tuesday morning. He needs to know: 304 or 316 for the railing? He calls his ustaad. No answer. In the next 90 seconds he guesses. He defaults to mild steel. JSL loses the tonne — not in a training room, but at the exact moment the knowledge was needed. That 90-second window is what we are designing for.'
+          // THE GAP - the human scene that opens the conversation
+          anecdote: 'A fabricator JSA trained 8 months ago is on a coastal job site. Tuesday morning. He needs to know: 304 or 316 for the railing? He calls his ustaad. No answer. In the next 90 seconds he guesses. He defaults to mild steel. JSL loses the tonne - not in a training room, but at the exact moment the knowledge was needed. That 90-second window is what we are designing for.'
         },
 
         success: {
-          // THE FIX — before / after the intervention
+          // THE FIX - before / after the intervention
           before: 'He is alone at the moment of decision. His ustaad is unreachable 30-60% of the time. He guesses. He defaults to mild steel. JSL loses the tonne.',
           after: 'Voice note in: "316 ya 304 for coastal railing?" Twenty seconds out: a voice clip and a grade diagram from a named JSA master. The fabricator knows exactly who told him. He wins the job. SS gets the tonne.',
-          // THE FLYWHEEL — the KPI that proves compounding
+          // THE FLYWHEEL - the KPI that proves compounding
           kpi: '5 or more organic questions per day by week 8, with zero prompting from JSA or FTP coordinators. That is the demand signal. Kill if it does not appear.'
         },
 
         features: [
-          // THE GAP — why the current system fails at this moment
+          // THE GAP - why the current system fails at this moment
           'How might we make sure a fabricator never has to guess alone at the exact moment JSA\'s knowledge is most needed?',
           'How might we make the knowledge JSA creates last longer than the training does?',
-          // THE FIX — what the product actually does
+          // THE FIX - what the product actually does
           'Voice-first WhatsApp Q&A: question in, named JSA master\'s answer out, 30 seconds, no app, no data plan.',
-          'Answers attributed to real masters — not anonymous AI. The fabricator knows who told him, and trusts it.',
-          // THE FLYWHEEL — why it compounds
+          'Answers attributed to real masters - not anonymous AI. The fabricator knows who told him, and trusts it.',
+          // THE FLYWHEEL - why it compounds
           'How might we make it so that knowledge does not retire when the master does?',
           'How might we turn one master answer into something that serves the next 10,000 fabricators who ask the same thing?',
           'Every question is data JSA does not have today: which grades trip fabricators up, where SS loses to mild steel before the decision is ever made.'
         ],
 
         pilot: {
-          // THE TEST — smallest version that gives a real answer
-          hypo: 'If we give 500 fabricators in one Hisar cluster a WhatsApp number backed by 5 JSA master trainers and a library of 200 recorded answers, organic questions reach 5 or more per day by week 8 — with no prompting from JSA or FTP coordinators after seeding ends.',
+          // THE TEST - smallest version that gives a real answer
+          hypo: 'If we give 500 fabricators in one Hisar cluster a WhatsApp number backed by 5 JSA master trainers and a library of 200 recorded answers, organic questions reach 5 or more per day by week 8 - with no prompting from JSA or FTP coordinators after seeding ends.',
           talk: [
             'Bhavna: what does post-training support look like today? Is there a helpline, a WhatsApp group, anything?',
             '10 fabricators in Hisar: what do you do when you have a question on site and your ustaad does not pick up?',
@@ -3025,7 +3025,7 @@
         case 'feat': return `<div class="feat-grid">${sec.data.map(f => `<div class="feat-item">${f}</div>`).join('')}</div>`;
         case 'notion': return `<a class="notion-link" href="${sec.url}" target="_blank">Full proposition in Notion →</a>`;
         case 'mixed': {
-          const phaseRe = /^Phase\s*(\d+)\s*[—-]\s*(.+?)\s*\(weeks?\s*([\d\-]+)/i;
+          const phaseRe = /^Phase\s*(\d+)\s*-\s*(.+?)\s*\(weeks?\s*([\d\-]+)/i;
           const phases = sec.data.map(sub => sub.heading && sub.heading.match(phaseRe)).filter(Boolean);
           const roadmap = phases.length >= 2 ? `<div class="phase-roadmap">${phases.map(m => `
             <div class="phase-roadmap-item">
