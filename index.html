@@ -2722,10 +2722,11 @@
     function renderGroupHead(key, groupBy, count, tamSum) {
       if (groupBy === 'tier' || groupBy === 'strategic') {
         const meta = groupBy === 'tier' ? TIER_META[key] : STRATEGIC_META[key];
+        const titleIcon = groupBy === 'strategic' ? `${meta.icon} ` : '';
         return `
       <div class="parent-banner">
         <div class="parent-banner-text">
-          <div class="parent-banner-title">${meta.icon} ${meta.label}</div>
+          <div class="parent-banner-title">${titleIcon}${meta.label}</div>
         </div>
         <div class="parent-banner-pills">
           <span class="pill-flat"><b>${count}</b> idea${count !== 1 ? 's' : ''}</span>
@@ -2809,7 +2810,7 @@
       ${idea.analogue ? `<div class="card-analogue">Like ${idea.analogue}</div>` : ''}
       <div class="card-tagline">${idea.tagline}</div>
       <div class="card-pills">
-        <span class="pill tier-${idea.tier}">${TIER_META[idea.tier].icon} ${TIER_META[idea.tier].label}</span>
+        <span class="pill tier-${idea.tier}">${TIER_META[idea.tier].label}</span>
         ${idea.stakes.length > 1 ? `<span class="pill outline-gold">${idea.stakes.map(s => STAKEHOLDERS[s]?.label).join(' + ')}</span>` : ''}
         <span class="pill">${haloDots} steel</span>
       </div>
@@ -3026,12 +3027,20 @@
         case 'notion': return `<a class="notion-link" href="${sec.url}" target="_blank">Full proposition in Notion →</a>`;
         case 'mixed': {
           const phaseRe = /^Phase\s*(\d+)\s*-\s*(.+?)\s*\(weeks?\s*([\d\-]+)/i;
-          const phases = sec.data.map(sub => sub.heading && sub.heading.match(phaseRe)).filter(Boolean);
-          const roadmap = phases.length >= 2 ? `<div class="phase-roadmap">${phases.map(m => `
+          const monthRe = /^(Months?\s*[\d\-]+)\s*-\s*(.+)/i;
+          const phases = sec.data.map(sub => {
+            if (!sub.heading) return null;
+            let m = sub.heading.match(phaseRe);
+            if (m) return { num: m[1], weeks: `Wk ${m[3]}`, label: m[2] };
+            m = sub.heading.match(monthRe);
+            if (m) return { num: m[1].match(/\d+/)[0], weeks: m[1], label: m[2] };
+            return null;
+          }).filter(Boolean);
+          const roadmap = phases.length >= 2 ? `<div class="phase-roadmap">${phases.map(p => `
             <div class="phase-roadmap-item">
-              <div class="phase-roadmap-num">${m[1]}</div>
-              <div class="phase-roadmap-weeks">Wk ${m[3]}</div>
-              <div class="phase-roadmap-label">${m[2]}</div>
+              <div class="phase-roadmap-num">${p.num}</div>
+              <div class="phase-roadmap-weeks">${p.weeks}</div>
+              <div class="phase-roadmap-label">${p.label}</div>
             </div>`).join('')}</div>` : '';
           return roadmap + sec.data.map(sub => `${sub.heading ? `<h4 style="font-size:11px; font-weight:800; color:var(--ink); text-transform:uppercase; letter-spacing:0.6px; margin:14px 0 8px;">${sub.heading}</h4>` : ''}${renderDetailBody(sub)}`).join('');
         }
@@ -3100,7 +3109,7 @@
         <p>${i.problem.anecdote}</p>
         <div style="margin-top:12px; display:flex; gap:6px; flex-wrap:wrap;">
           ${i.stakes.map(s => `<span class="pill" style="border-color:var(--n300); color:var(--ink-mid); background:var(--bg-alt);">${STAKEHOLDERS[s]?.label || s}</span>`).join('')}
-          <span class="pill tier-${i.tier}" style="background: ${i.tier === 'NOW' ? 'rgba(0,154,70,0.15)' : i.tier === 'NEXT' ? 'rgba(255,182,0,0.15)' : 'rgba(49,104,215,0.15)'}; color: var(--ink-mid); border-color: rgba(0,0,0,0.1);">${TIER_META[i.tier].icon} ${TIER_META[i.tier].label}</span>
+          <span class="pill tier-${i.tier}" style="background: ${i.tier === 'NOW' ? 'rgba(0,154,70,0.15)' : i.tier === 'NEXT' ? 'rgba(255,182,0,0.15)' : 'rgba(49,104,215,0.15)'}; color: var(--ink-mid); border-color: rgba(0,0,0,0.1);">${TIER_META[i.tier].label}</span>
           <span class="pill" style="background:var(--bg-alt); color:var(--ink-mid); border-color:var(--n300);">${STRATEGIC_META[i.side].label}</span>
         </div>
       </div>
